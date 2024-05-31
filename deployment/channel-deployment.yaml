@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: channel-container
-          image: your-ecr-repo-url/your-image:tag # ECR의 이미지 URL과 태그를 여기에 넣어야 합니다.
+          image: your-ecr-repo-url/your-image:tag
           ports:
             - containerPort: 80

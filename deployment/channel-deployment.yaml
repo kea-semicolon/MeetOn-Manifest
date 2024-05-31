@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: channel-deployment
+  namespace: meeton-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: channel
+  template:
+    metadata:
+      labels:
+        app: channel
+    spec:
+      containers:
+        - name: channel-container
+          image: your-ecr-repo-url/your-image:tag # ECR의 이미지 URL과 태그를 여기에 넣어야 합니다.
+          ports:
+            - containerPort: 80

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: zookeeper
+  namespace: meeton-backend
+  labels:
+    app: meeton-backend
+spec:
+  selector:
+    matchLabels:
+      app: meeton-backend
+  serviceName: zookeeper
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: meeton-backend
+    spec:
+      containers:
+        - name: zookeeper
+          image: wurstmeister/zookeeper:latest
+          ports:
+            - containerPort: 2181
+          env:
+            - name: ZOOKEEPER_CLIENT_PORT
+              value: "2181"

@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: channel-service
   namespace: meeton-backend
+  labels: meeton-backend
 spec:
   selector:
     app: channel

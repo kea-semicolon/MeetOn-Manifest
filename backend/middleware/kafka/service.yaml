@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka
+  namespace: meeton-backend
+  labels:
+    app: meeton-backend
+spec:
+  ports:
+    - port: 9092
+      name: kafka
+  selector:
+    app: meeton-backend

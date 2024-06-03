@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kafka
+  namespace: meeton-backend
+  labels:
+    app: meeton-backend
+spec:
+  selector:
+    matchLabels:
+      app: meeton-backend
+  serviceName: kafka
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: meeton-backend
+    spec:
+      containers:
+        - name: kafka
+          image: wurstmeister/kafka:latest # 이미지 태그 필요 시 변경 가능
+          ports:
+            - containerPort: 9092
+          envFrom:
+            - configMapRef:
+                name: kafka-config
+          env:
+            - name: KAFKA_BROKER_ID
+              value: "0" # 필요 시 브로커 ID 변경 가능
+            - name: KAFKA_ZOOKEEPER_CONNECT
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka-config
+                  key: KAFKA_ZOOKEEPER_CONNECT
+            - name: KAFKA_ADVERTISED_LISTENERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka-config
+                  key: KAFKA_ADVERTISED_LISTENERS

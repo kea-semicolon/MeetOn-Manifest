@@ -1,20 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: channel-deployment
+  name: board-deployment
   namespace: meeton-backend
+  labels: meeton-backend
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: channel
+      app: board
   template:
     metadata:
       labels:
-        app: channel
+        app: board
     spec:
       containers:
-        - name: channel-container
+        - name: board-container
           image: your-ecr-repo-url/your-image:tag
           ports:
             - containerPort: 80

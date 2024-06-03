@@ -3,7 +3,8 @@ kind: Service
 metadata:
   name: member-service
   namespace: meeton-backend
-  labels: meeton-backend
+  labels:
+    app: meeton-backend
 spec:
   selector:
     app: member

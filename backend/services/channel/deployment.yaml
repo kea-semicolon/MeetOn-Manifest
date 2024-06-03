@@ -3,7 +3,8 @@ kind: Deployment
 metadata:
   name: channel-deployment
   namespace: meeton-backend
-  labels: meeton-backend
+  labels:
+    app: meeton-backend
 spec:
   replicas: 3
   selector:

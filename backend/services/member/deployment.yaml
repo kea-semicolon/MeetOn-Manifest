@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: member-container
-          image: your-ecr-repo-url/member-image:tag
+          image: 981883772993.dkr.ecr.ap-northeast-2.amazonaws.com/meeton-member:v1.020240601
           ports:
             - containerPort: 80

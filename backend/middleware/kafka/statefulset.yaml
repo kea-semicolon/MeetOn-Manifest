@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: kafka
-          image: wurstmeister/kafka:latest # 이미지 태그 필요 시 변경 가능
+          image: wurstmeister/kafka:latest
           ports:
             - containerPort: 9092
           envFrom:

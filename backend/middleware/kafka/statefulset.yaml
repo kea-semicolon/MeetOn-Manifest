@@ -37,3 +37,8 @@ spec:
                 configMapKeyRef:
                   name: kafka-config
                   key: KAFKA_ADVERTISED_LISTENERS
+            - name: KAFKA_LISTENERS
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka-config
+                  key: KAFKA_LISTENERS

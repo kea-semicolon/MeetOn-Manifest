@@ -10,7 +10,7 @@ spec:
     matchLabels:
       app: meeton-backend
   serviceName: kafka
-  replicas: 3 # Use 3 replicas for production Kafka
+  replicas: 1
   template:
     metadata:
       labels:
@@ -29,7 +29,7 @@ spec:
             - name: KAFKA_BROKER_ID
               valueFrom:
                 fieldRef:
-                  fieldPath: metadata.pod.name # Dynamic broker ID
+                  fieldPath: metadata.name # Pod 이름을 가져오는 올바른 방법
             - name: KAFKA_ADVERTISED_LISTENERS
               value: PLAINTEXT://${KAFKA_ADVERTISED_HOST}:${KAFKA_ADVERTISED_PORT}
             - name: KAFKA_LISTENERS

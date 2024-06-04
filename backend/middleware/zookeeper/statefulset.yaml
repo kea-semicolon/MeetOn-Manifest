@@ -10,7 +10,7 @@ spec:
     matchLabels:
       app: meeton-backend
   serviceName: zookeeper
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -30,7 +30,7 @@ spec:
             - name: ZOOKEEPER_SERVER_ID
               valueFrom:
                 fieldRef:
-                  fieldPath: metadata.pod.name
+                  fieldPath: metadata.name # Pod 이름을 가져오는 올바른 방법
           volumeMounts:
             - name: datadir
               mountPath: /data

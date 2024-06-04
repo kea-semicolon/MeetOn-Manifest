@@ -10,7 +10,7 @@ spec:
     matchLabels:
       app: meeton-backend
   serviceName: zookeeper
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
@@ -21,6 +21,25 @@ spec:
           image: wurstmeister/zookeeper:latest
           ports:
             - containerPort: 2181
+              name: client
           env:
             - name: ZOOKEEPER_CLIENT_PORT
               value: "2181"
+            - name: ZOOKEEPER_TICK_TIME
+              value: "2000"
+            - name: ZOOKEEPER_SERVER_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.pod.name
+          volumeMounts:
+            - name: datadir
+              mountPath: /data
+  volumeClaimTemplates:
+    - metadata:
+        name: datadir
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: gp2
+        resources:
+          requests:
+            storage: 10Gi

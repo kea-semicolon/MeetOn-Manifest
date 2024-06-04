@@ -9,5 +9,7 @@ spec:
   ports:
     - port: 2181
       name: client
+      targetPort: client
   selector:
     app: meeton-backend
+  clusterIP: None # Use headless service for StatefulSet

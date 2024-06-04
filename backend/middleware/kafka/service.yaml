@@ -9,5 +9,7 @@ spec:
   ports:
     - port: 9092
       name: kafka
+      targetPort: kafka
   selector:
     app: meeton-backend
+  clusterIP: None # Use headless service for StatefulSet
